@@ -1,0 +1,34 @@
+:: build.bat
+:: Script para compilar o projeto JavaFX
+
+@echo off
+setlocal
+
+:: Define o caminho para o JavaFX SDK
+:: Certifique-se de que esta pasta existe e contém os JARs do JavaFX
+set PATH_TO_FX="lib\javafx-sdk-21\lib"
+
+:: Define a classe principal da sua aplicação
+set APP_MAIN_CLASS=com.mkcalculadora.CalculadoraMTM
+
+echo Compilando o projeto Java...
+
+:: Cria o diretório de saída 'out' se ele não existir
+if not exist out mkdir out
+
+:: Comando de compilação
+:: -d out: especifica o diretório de saída para os arquivos .class
+:: --module-path: especifica onde encontrar os módulos JavaFX
+:: --add-modules: especifica quais módulos JavaFX devem ser adicionados ao classpath
+:: src\main\java\com\mkcalculadora\*.java: compila todos os arquivos Java dentro do pacote
+:: src\module-info.java: compila o arquivo de informações do módulo
+javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -d out src\main\java\com\mkcalculadora\*.java src\module-info.java
+
+:: Verifica o código de erro da compilação
+if %ERRORLEVEL% NEQ 0 (
+    echo Erro na compilação. Por favor, verifique as mensagens de erro acima.
+    exit /b %ERRORLEVEL%
+)
+
+echo Compilação concluida com sucesso!
+endlocal
