@@ -1,0 +1,119 @@
+/* src/main/resources/styles.css */
+
+.root-pane {
+    -fx-background-color: #f4f7f6; /* Um cinza claro */
+    -fx-font-family: "Inter", sans-serif; /* Usando Inter conforme instrução */
+}
+
+.grid-pane {
+    -fx-padding: 20px;
+    -fx-background-color: #ffffff; /* Fundo branco para o grid principal */
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5); /* Sombra suave */
+}
+
+.bottom-box {
+    -fx-background-color: #e0e0e0; /* Um cinza um pouco mais escuro para a parte de baixo */
+    -fx-padding: 15px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.text-field {
+    -fx-padding: 8px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.button-primary {
+    -fx-background-color: #007bff; /* Azul */
+}
+.button-primary:hover {
+    -fx-background-color: #0056b3;
+}
+
+.button-success {
+    -fx-background-color: #28a745; /* Verde */
+}
+.button-success:hover {
+    -fx-background-color: #218838;
+}
+
+.button-info {
+    -fx-background-color: #17a2b8; /* Ciano */
+}
+.button-info:hover {
+    -fx-background-color: #138496;
+}
+
+.button-danger {
+    -fx-background-color: #dc3545; /* Vermelho */
+}
+.button-danger:hover {
+    -fx-background-color: #c82333;
+}
+
+.button-default {
+    -fx-background-color: #6c757d; /* Cinza */
+}
+.button-default:hover {
+    -fx-background-color: #5a6268;
+}
+
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #007bff; /* Cabeçalho da tabela azul */
+    -fx-background-radius: 5px 5px 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-padding: 8px 10px;
+    -fx-border-color: transparent transparent #eee transparent; /* Linhas divisórias claras */
+    -fx-font-size: 13px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #cfe2ff; /* Seleção levemente azul */
+    -fx-text-fill: #333;
+}
