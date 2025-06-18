@@ -1,0 +1,20 @@
+crono-MTM/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── mkcalculadora/
+│   │   │           ├── CalculadoraMTM.java
+│   │   │           ├── LoginScreen.java
+│   │   │           ├── ReportGenerator.java
+│   │   │           └── Activity.java (Modelo de dados)
+│   └── module-info.java
+├── lib/
+│   └── javafx-sdk-21/
+│       └── lib/ (coloque os arquivos JAR do JavaFX aqui)
+├── build.bat
+├── run.bat
+├── package_installer.bat
+├── README.md
+└── resources/ (Para ícones, logos, etc.)
+    └── mk_logo.ico (Seu ícone personalizado)
