@@ -1,0 +1,65 @@
+Para enviar todos os códigos do seu projeto crono-MTM para o repositório GitHub https://github.com/marcosgarcon/crono-MTM-MK, siga estes passos:
+
+Pré-requisitos:
+
+Git Instalado: Certifique-se de ter o Git instalado em seu computador. Se não tiver, baixe e instale-o em git-scm.com/downloads.
+
+Repositório GitHub Criado: Você já mencionou https://github.com/marcosgarcon/crono-MTM-MK, então presumo que o repositório já foi criado no GitHub. Se não, crie um novo repositório vazio com esse nome na sua conta do GitHub.
+
+Passos para o Upload:
+
+Abra o Terminal ou Prompt de Comando:
+
+No Windows, você pode usar o "Git Bash" (instalado com o Git), o "Prompt de Comando" ou o "PowerShell".
+
+No macOS/Linux, use o Terminal.
+
+Navegue até a Pasta do Seu Projeto:
+Use o comando cd (change directory) para ir até a pasta raiz do seu projeto crono-MTM.
+
+cd C:\crono-MTM  # Exemplo para Windows
+# ou
+cd /caminho/para/seu/projeto/crono-MTM # Exemplo para Linux/macOS
+
+Inicialize um Repositório Git Local:
+Se esta é a primeira vez que você está usando o Git nesta pasta, inicialize um novo repositório Git.
+
+git init
+
+Isso criará uma pasta oculta .git dentro do seu projeto.
+
+Adicione os Arquivos ao "Staging Area":
+Este comando adiciona todos os arquivos do seu projeto ao índice (staging area) do Git, preparando-os para o commit.
+
+git add .
+
+O ponto (.) significa "todos os arquivos e pastas no diretório atual".
+
+Faça o Primeiro Commit:
+Este comando "salva" os arquivos que estão no staging area no histórico do Git, com uma mensagem descritiva.
+
+git commit -m "Primeiro commit: Estrutura inicial do projeto Cronoanálise MTM com JavaFX e análise de vídeo"
+
+Adicione o Repositório Remoto (GitHub):
+Associe seu repositório local ao repositório vazio que você criou no GitHub. Use a URL do seu repositório.
+
+git remote add origin https://github.com/marcosgarcon/crono-MTM-MK.git
+
+origin é o nome padrão dado ao repositório remoto.
+
+Substitua https://github.com/marcosgarcon/crono-MTM-MK.git pela URL real do seu repositório, se for diferente (certifique-se de usar a URL HTTPS ou SSH correta).
+
+Envie os Arquivos para o GitHub (Push):
+Finalmente, envie seus commits locais para o repositório remoto no GitHub.
+
+git push -u origin main
+# ou, se o branch principal do seu GitHub for 'master':
+# git push -u origin master
+
+main (ou master) é o nome do branch padrão. Se você criou o repositório no GitHub recentemente, ele provavelmente usará main.
+
+-u origin main define o branch main local para rastrear o branch main remoto, tornando futuros git push e git pull mais simples (apenas git push ou git pull).
+
+Você pode ser solicitado a inserir seu nome de usuário e token de acesso pessoal (Personal Access Token - PAT) do GitHub. O GitHub não aceita mais senhas para operações Git via HTTPS. Se você não tiver um PAT, precisará criar um nas configurações do desenvolvedor do GitHub.
+
+Após seguir esses passos, seus códigos estarão visíveis no repositório https://github.com/marcosgarcon/crono-MTM-MK no GitHub.
