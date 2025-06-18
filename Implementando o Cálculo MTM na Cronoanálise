@@ -1,0 +1,98 @@
+Implementando o Cálculo MTM na Cronoanálise
+O MTM é um sistema de tempos pré-determinados que se baseia em micro-movimentos fundamentais. Cada movimento elementar tem um tempo associado, geralmente em TMUs (Time Measurement Units), onde 1 TMU = 0,00001 hora = 0,0006 minuto = 0,036 segundo.
+
+1. Entendendo os Elementos MTM:
+
+Para implementar o MTM, você precisará de uma base de dados (ou uma representação em código) dos movimentos elementares e seus tempos correspondentes. Os sistemas MTM mais comuns incluem:
+
+MTM-1: O mais detalhado, com movimentos como Alcançar (Reach - R), Mover (Move - M), Girar (Turn - T), Agarrar (Grasp - G), Posicionar (Position - P), Desengatar (Disengage - D), Liberar (Release - RL), entre outros. Cada um tem variações de distância, peso, dificuldade, etc., que afetam o tempo.
+
+MTM-2, MTM-UAS, MTM-SD: Versões simplificadas do MTM-1, que agrupam movimentos para uma aplicação mais rápida, mas com menor precisão.
+
+Para uma implementação inicial, você pode focar nos movimentos básicos do MTM-1 ou em um subconjunto relevante para o seu contexto industrial.
+
+2. Onde Integrar no CalculadoraMTM.java:
+
+Atualmente, a adição de uma atividade usa activityDescriptionField e manualTimeField. Para o MTM, o manualTimeField precisaria ser substituído por um mecanismo que construa o tempo MTM.
+
+Você pode criar uma nova funcionalidade (um botão "Adicionar Atividade MTM" ou uma aba/modal separada) que abra uma janela ou seção onde o usuário possa:
+
+Selecionar o tipo de movimento (ex: Alcançar, Mover).
+
+Inserir parâmetros para esse movimento (ex: distância para Alcançar, peso para Mover).
+
+O sistema então consultaria uma "tabela MTM" interna e retornaria o tempo correspondente para aquele movimento.
+
+O usuário adicionaria múltiplos movimentos para compor uma atividade completa.
+
+3. Estrutura de Dados MTM:
+
+Você precisaria de uma forma de armazenar os tempos MTM. Isso pode ser feito como:
+
+Classes Java: Definir classes para cada tipo de movimento MTM, com métodos para calcular o tempo com base em parâmetros.
+
+Mapas/Listas: Utilizar HashMap ou ArrayList para mapear códigos MTM a seus tempos.
+
+Arquivo de Configuração: Ler os tempos MTM de um arquivo JSON, XML ou CSV na inicialização do aplicativo.
+
+Exemplo Conceitual (Não é código completo, apenas ideia):
+
+// Exemplo de como uma "calculadora" de movimento MTM poderia funcionar
+public class MTMCalculator {
+    // Tabela simplificada de tempos MTM (apenas para exemplo)
+    // Na vida real, seria muito mais complexa com variações de distância, peso, etc.
+    private static final Map<String, Double> mtmTimes = new HashMap<>();
+
+    static {
+        // Exemplo de alguns tempos em TMUs
+        mtmTimes.put("REACH_A_5CM", 2.0);  // Alcançar 5cm, tipo A (movimento simples)
+        mtmTimes.put("MOVE_A_5CM_0KG", 2.1); // Mover 5cm, tipo A, 0kg
+        mtmTimes.put("GRASP_CASE_1", 3.0); // Agarrar, tipo caso 1
+        mtmTimes.put("RELEASE", 1.0);     // Liberar
+        // ... muitos outros
+    }
+
+    public double getTimeForMovement(String movementCode, Map<String, Object> parameters) {
+        // Lógica complexa aqui para consultar a tabela MTM real
+        // com base no código e nos parâmetros (distância, peso, etc.)
+        // Por enquanto, apenas um placeholder para o tempo manual
+        if (mtmTimes.containsKey(movementCode)) {
+            return mtmTimes.get(movementCode);
+        }
+        return 0.0; // Movimento não encontrado
+    }
+}
+
+4. Fluxo de Trabalho Sugerido no UI:
+
+Adicionar Botão "Análise MTM": Na interface principal, adicione um botão que, ao ser clicado, abrirá uma nova janela ou um TabPane para a análise MTM.
+
+Interface de Construção MTM:
+
+Nesta nova interface, o usuário veria listas suspensas ou campos de entrada para selecionar o tipo de movimento MTM (ex: Alcançar, Mover, Agarrar).
+
+Com base na seleção, campos adicionais apareceriam para inserir os parâmetros do movimento (ex: distância em cm, peso em kg, tipo de agarrar).
+
+Um botão "Adicionar Movimento" adicionaria esse micro-movimento a uma lista temporária para a atividade atual.
+
+A lista mostraria o código do movimento e seu tempo MTM calculado.
+
+Um "Total da Atividade MTM" seria exibido, somando os tempos de todos os micro-movimentos.
+
+Finalizar Atividade MTM: Ao concluir a composição da atividade via MTM, um botão "Confirmar Atividade" transferiria a descrição da atividade (talvez gerada automaticamente com base nos movimentos) e o tempo total MTM para a tabela principal do CalculadoraMTM.
+
+5. Considerações sobre o "Calcular através de vídeo longo":
+
+Esta funcionalidade seria um aprimoramento avançado para a cronoanálise MTM. Envolveria:
+
+Carregamento de Vídeo: Permitir que o usuário carregue um arquivo de vídeo.
+
+Controles de Vídeo: Reproduzir, pausar, avançar/retroceder.
+
+Marcação de Tempo/Eventos: A funcionalidade principal seria permitir que o usuário marque o início e o fim de cada micro-movimento no vídeo.
+
+Associação MTM: Após marcar os movimentos, o usuário associaria esses segmentos de vídeo aos elementos MTM correspondentes e seus parâmetros.
+
+Cálculo Automático: O sistema então calcularia o tempo MTM para a sequência observada no vídeo.
+
+Essa parte é significativamente mais complexa e envolveria bibliotecas de vídeo (como Java Media Framework - JMF, ou integrando algo via JavaScript se fosse uma webapp), e a lógica para sincronizar o vídeo com a entrada do usuário para a análise MTM. Para uma primeira versão, o foco deve ser na entrada manual e depois estender para a análise de vídeo.
